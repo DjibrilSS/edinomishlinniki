@@ -64,7 +64,7 @@ const belhiSlice = createSlice({
         state.belhi = action.payload;
       })
       .addCase(followThunk.fulfilled, (state, action) => {
-        state.render = true;
+        state.render = !state.render;
       })
       .addCase(addBelhi.fulfilled, (state, action) => {
         state.belhi.push(action.payload);

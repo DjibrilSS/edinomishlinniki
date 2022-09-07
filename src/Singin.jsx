@@ -17,6 +17,7 @@ const Singin = () => {
     setLogin("");
     setPassword("");
     dispatch(loginThunk({ login, password }));
+    window.location.reload()
   };
 
   return (

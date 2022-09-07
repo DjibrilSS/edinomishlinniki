@@ -4,6 +4,7 @@ const initialState = {
   load: false,
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
+  render: false
 };
 export const authThunk = createAsyncThunk(
   "fetch/auth",
@@ -71,6 +72,7 @@ const applicationSlice = createSlice({
         state.load = false;
         state.error = null;
         state.token = action.payload.token;
+        state.render = true
       });
   },
 });

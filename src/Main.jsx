@@ -6,11 +6,13 @@ import { fetchBelhi } from "./feauters/belhiSlice";
 import { Link } from "react-router-dom";
 
 const Main = () => {
+  const render = useSelector((state) => state.application.render);
   const dispatch = useDispatch();
+  const belhi = useSelector((state) => state.belhi.belhi);
   useEffect(() => {
     dispatch(fetchBelhi());
   }, []);
-  const belhi = useSelector((state) => state.belhi.belhi);
+
   return (
     <div>
       <div>
@@ -27,7 +29,9 @@ const Main = () => {
           );
         })}
       </div>
-      <Link to="/create"><button>Добавить свою белху</button></Link>
+      <Link to="/create">
+        <button>Добавить свою белху</button>
+      </Link>
     </div>
   );
 };
