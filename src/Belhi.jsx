@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/exports";
 import { useParams } from "react-router-dom";
 import { addBelhi } from "./feauters/belhiSlice";
+import { useNavigate } from "react-router-dom";
 
 const Belhi = () => {
+  const navigate = useNavigate();
   const token = useSelector((state) => state.application.token);
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -20,6 +22,7 @@ const Belhi = () => {
     dispatch(addBelhi({ name, text, count }));
     setName("");
     setText("");
+    navigate("/");
   };
   const handleMinus = () => {
     if (count !== 1) {
