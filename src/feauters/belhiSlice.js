@@ -37,7 +37,7 @@ export const followThunk = createAsyncThunk(
 );
 export const addBelhi = createAsyncThunk(
   "fetch/addBelhi",
-  async ({ name, text }, thunkAPI) => {
+  async ({ name, text, count }, thunkAPI) => {
     try {
       const res = await fetch(`http://localhost:5000/belhi`, {
         method: "POST",
@@ -45,7 +45,7 @@ export const addBelhi = createAsyncThunk(
           "Content-Type": "application/json",
           authorization: `Bearer ${thunkAPI.getState().application.token}`,
         },
-        body: JSON.stringify({ name, text }),
+        body: JSON.stringify({ name, text, count }),
       });
       return await res.json();
     } catch (e) {

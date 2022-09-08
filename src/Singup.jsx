@@ -20,20 +20,20 @@ const Singup = () => {
   };
 
   return (
-    <div>
-      <input
+    <div className="loginDiv">
+      <input className="input"
         placeholder="ЛОГИН"
         onChange={(e) => handleChange(e)}
         value={login}
         type="text"
       />
-      <input
+      <input className="input"
         placeholder="ПАРОЛЬ"
         onChange={(e) => handleChangePas(e)}
         value={password}
         type="text"
       />
-      <button onClick={() => handleClick()}>РЕГИСТРАЦИЯ</button>
+      <button className="button" onClick={() => handleClick()}>Регистрация</button>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { fetchBelhi, followThunk } from "./feauters/belhiSlice";
 
 const NewBelhi = () => {
+  const token = useSelector((state) => state.application.token);
   const dispatch = useDispatch();
   const id = useParams();
   const bolh = useSelector((state) =>
@@ -19,17 +20,21 @@ const NewBelhi = () => {
     dispatch(followThunk(data));
   };
   return (
-    <div>
+    <div className="bolhDiv">
       {bolh.map((item) => {
         return (
           <>
-            <div>{item.name}</div>
-            <div>{`белхи открыл ${item.creater.login}`}</div>
-            <div>{`описание белхов: ${item.text}`}</div>
-            <div>{`подписанные пользователи: ${item.followers.map(
-              (element) => element.login
-            )}`}</div>
-            <button onClick={() => handleClick(item._id)}>
+            <div className="title">{item.name}</div>
+            <div className="title">{`белхи открыл ${item.creater.login}`}</div>
+            <div className="title">{`описание белхов: ${item.text}`}</div>
+            <div className="title">{`подписанные пользователи: ${item.followers
+              .filter((el, index) => index !== 0)
+              .map((element) => element.login)}`}</div>
+            <button
+              disabled={item.count < item.followers.length || token === null}
+              className="bolhButton"
+              onClick={() => handleClick(item._id)}
+            >
               подписаться на белхи
             </button>
           </>

@@ -17,25 +17,31 @@ const Singin = () => {
     setLogin("");
     setPassword("");
     dispatch(loginThunk({ login, password }));
-    window.location.reload()
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
-    <div>
+    <div className="loginDiv">
       <input
+        className="input"
         placeholder="ЛОГИН"
         onChange={(e) => handleChange(e)}
         value={login}
         type="text"
       />
       <input
+        className="input"
         placeholder="ПАРОЛЬ"
         onChange={(e) => handleChangePas(e)}
         value={password}
         type="text"
       />
       <div></div>
-      <button onClick={() => handleClick()}>"Войти"</button>
+      <button className="button" onClick={() => handleClick()}>
+        Войти
+      </button>
     </div>
   );
 };

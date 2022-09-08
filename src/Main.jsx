@@ -6,7 +6,6 @@ import { fetchBelhi } from "./feauters/belhiSlice";
 import { Link } from "react-router-dom";
 
 const Main = () => {
-  const render = useSelector((state) => state.application.render);
   const dispatch = useDispatch();
   const belhi = useSelector((state) => state.belhi.belhi);
   useEffect(() => {
@@ -14,23 +13,26 @@ const Main = () => {
   }, []);
 
   return (
-    <div>
-      <div>
+    <div className="div">
+      <div className="mainDiv">
         {belhi.map((item) => {
           return (
-            <div>
-              <div>{item.creater.login}</div>
-              <div>{item.name}</div>
-              <div>{`количество белхлой:${item.followers.length}`}</div>
+            <div className={item.count < item.followers.length ? "cartFull" :"cart"}>
+              <div className="title">{item.creater.login}</div>
+              <div className="text">{item.name}</div>
+              <div className="count">{`требуемое количество белхлой:${item.count}`}</div>
+              <div className="count">{`количество белхлой:${
+                item.followers.length - 1
+              }`}</div>
               <Link to={`/belhi/${item._id}`}>
-                <button>Подробнее</button>
+                <button className="cartButton">Подробнее</button>
               </Link>
             </div>
           );
         })}
       </div>
       <Link to="/create">
-        <button>Добавить свою белху</button>
+        <button className="newButton">Добавить свою белху</button>
       </Link>
     </div>
   );
